@@ -51,7 +51,11 @@ class Bookstore extends Component {
         />
 
         {filterList.map((book, index) => {
-          return <Book key={index} book={book} i={index} />;
+          return (
+            <div className="container">
+              <Book key={index} book={book} i={index} />
+            </div>
+          );
         })}
       </div>
     );

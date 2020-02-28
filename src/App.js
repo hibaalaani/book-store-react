@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Hello from "./components/Hello";
 import Bookstore from "./components/Bookstore";
 import Book from "./components/Book";
 
@@ -22,7 +21,7 @@ function App() {
 
         {/* <Book book={helloBook} i={99999} /> */}
         <Bookstore />
-        <Hello />
+        {/* <Hello /> */}
       </header>
     </div>
   );

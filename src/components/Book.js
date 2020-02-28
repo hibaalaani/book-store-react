@@ -4,46 +4,94 @@ export default class Book extends Component {
     super();
     this.state = {
       book: props.book,
-      readMore: false
+      readMore: false,
+      bookInfo: false
     };
   }
 
   ///////////more info button
   moreInfo() {
     //let id = event.target.id;
-    this.setState({ readMore: !this.state.readMore });
+    this.setState({
+      readMore: !this.state.readMore
+    });
+  }
+  openBook() {
+    this.setState({
+      bookInfo: !this.state.bookInfo
+    });
+  }
+  closeBack() {
+    this.setState({
+      bookInfo: false
+    });
   }
   render() {
     const book = this.state.book;
     return (
-      <div style={style.container}>
+      <div>
+        {" "}
         {/* <div className="row">
-        <div className="col"> */}
-        <div className="row justify-content-center wrap">
-          <div className="col-sm-6">
-            <h1 className="title" style={style.title}>
-              {book.title}
-            </h1>
-
-            {book.cover && (
-              <React.Fragment>
-                <img alt="img" src={book.cover} style={style.img} />
-
-                <p>image</p>
-              </React.Fragment>
-            )}
-            <button
-              onClick={event => {
-                this.moreInfo();
-              }}
-            >
-              more info
-            </button>
-            <div>{this.state.readMore && <p>{book.description}</p>}</div>
+                <div className="col"> */}{" "}
+        <div className="row justify-content-center  wrap">
+          <div className="flipCard col-md-2.5">
+            <div className=" flipCardInner">
+              <div className="flipCardFront">
+                {book.cover && (
+                  <React.Fragment>
+                    <img alt="img" src={book.cover} style={style.img} />{" "}
+                  </React.Fragment>
+                )}{" "}
+              </div>
+              <div className="flipCardBack">
+                <h4 className="title" style={style.title}>
+                  {" "}
+                  {book.title}{" "}
+                </h4>
+                <h6>
+                  <button
+                    onClick={event => {
+                      this.moreInfo();
+                    }}
+                  >
+                    read more{" "}
+                  </button>{" "}
+                  {this.state.readMore && <p> {book.description} </p>}
+                </h6>
+                <button
+                  className="btn-sm"
+                  onClick={event => {
+                    this.openBook();
+                  }}
+                >
+                  more info
+                </button>
+              </div>{" "}
+            </div>{" "}
           </div>
+          {this.state.bookInfo && (
+            <React.Fragment>
+              <div className="myModal">
+                <div className="modelContent">
+                  <img
+                    alt="img"
+                    src={book.detail}
+                    // style={style.img}
+                  />{" "}
+                  <button
+                    className="close btn btn-md text-primary"
+                    onClick={event => {
+                      this.closeBack();
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+            </React.Fragment>
+          )}{" "}
         </div>
       </div>
-      // </div>
     );
   }
 }
@@ -53,12 +101,8 @@ const style = {
     color: "red"
   },
   container: {
-    // backgroundColor: 'white'
-  },
-  // img: {
-  //   width: "60%",
-  //   height: "100 %"
-  // },
+    backgroundColor: "white"
+  }
 
   // flipCard: {
   //   backgroundColor: "transparent",
@@ -91,9 +135,9 @@ const style = {
   //   position: "absolute",
   //   width: " 100 %",
   //   height: " 100 %"
-    // -webkit - backface - visibility: "hidden",
-    // backface - visibility:" hidden",
-  }
+  // -webkit - backface - visibility: "hidden",
+  // backface - visibility:" hidden",
+  // }
 
   // flipCardFront: {
   //   backgroundColor: "#bbb",

@@ -117,20 +117,28 @@ img {
   /* padding: 20px; */
   border: 1px solid #888;
   /* width: 70%; */
+  opacity: 0.8;
+
 }
 
 .close {
+  margin: 10px auto;
+  color: rgb(13, 121, 245);
 
-  display: flex;
-  float: center;
+  float: inline-start;
   font-size: 28px;
   font-weight: bold;
+  background-color: white;
 
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: rgb(55, 61, 68);
   text-decoration: none;
   cursor: pointer;
+}
+
+.opacity {
+  opacity: 0.9;
 }

@@ -33,65 +33,67 @@ export default class Book extends Component {
         {" "}
         {/* <div className="row">
                 <div className="col"> */}{" "}
-        <div className="row justify-content-center  wrap">
-          <div className="flipCard col-md-2.5">
-            <div className=" flipCardInner">
-              <div className="flipCardFront">
-                {book.cover && (
-                  <React.Fragment>
-                    <img alt="img" src={book.cover} style={style.img} />{" "}
-                  </React.Fragment>
-                )}{" "}
-              </div>
-              <div className="flipCardBack">
-                <h4 className="title" style={style.title}>
-                  {" "}
-                  {book.title}{" "}
-                </h4>
-                <h6>
-                  <button
-                    onClick={event => {
-                      this.moreInfo();
-                    }}
-                  >
-                    read more{" "}
-                  </button>{" "}
-                  {this.state.readMore && <p> {book.description} </p>}
-                </h6>
+        {/* <div className="row justify-content-center  wrap"> */}
+        <div className="flipCard col-md-2.5">
+          <div className=" flipCardInner">
+            <div className="flipCardFront">
+              {book.cover && (
+                <React.Fragment>
+                  <img alt="img" src={book.cover} style={style.img} />{" "}
+                </React.Fragment>
+              )}{" "}
+            </div>
+            <div className="flipCardBack">
+              <h4 className="title" style={style.title}>
+                {" "}
+                {book.title}{" "}
+              </h4>
+              <h6>
                 <button
-                  className="btn-sm"
                   onClick={event => {
-                    this.openBook();
+                    this.moreInfo();
                   }}
                 >
-                  more info
-                </button>
-              </div>{" "}
+                  read more{" "}
+                </button>{" "}
+                {this.state.readMore && <p> {book.description} </p>}
+              </h6>
+              <button
+                className="btn-sm"
+                onClick={event => {
+                  this.openBook();
+                }}
+              >
+                more info
+              </button>
             </div>{" "}
-          </div>
-          {this.state.bookInfo && (
-            <React.Fragment>
-              <div className="myModal">
-                <div className="modelContent">
-                  <img
-                    alt="img"
-                    src={book.detail}
-                    // style={style.img}
-                  />{" "}
-                  <button
-                    className="close btn btn-md text-primary"
-                    onClick={event => {
-                      this.closeBack();
-                    }}
-                  >
-                    X
-                  </button>
-                </div>
-              </div>
-            </React.Fragment>
-          )}{" "}
+          </div>{" "}
         </div>
+        {this.state.bookInfo && (
+          <React.Fragment>
+            <div className="myModal ">
+              <div className="modelContent opacity">
+                <img
+                  className="opacity"
+                  alt="img"
+                  src={book.detail}
+                  // style={style.img}
+                />{" "}
+                <button
+                  type="button"
+                  className="close btn-primary bg-white text-primary inline-block"
+                  onClick={event => {
+                    this.closeBack();
+                  }}
+                >
+                  Back To Book List
+                </button>
+              </div>
+            </div>
+          </React.Fragment>
+        )}{" "}
       </div>
+      // </div>
     );
   }
 }

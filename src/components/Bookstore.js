@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Book from "./Book";
+// import HeaderW from "./HeaderW";
 
 class Bookstore extends Component {
   constructor() {
@@ -42,21 +43,54 @@ class Bookstore extends Component {
     const filterList = this.filter();
     return (
       <div>
+        <div className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a className="navbar-brand" href="/#" target="#">
+            Book Store
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarText">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
+                <a className="nav-link" href="/#">
+                  contact <span className="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li className="nav-item">
+                <a className="nav-link" href="/#">
+                  Pricing
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <input
+          className="App"
           type="search"
           onChange={event => {
             this.setState({ search: event.target.value });
           }}
           id=""
-        />
-
-        {filterList.map((book, index) => {
-          return (
-            <div className="container">
-              <Book key={index} book={book} i={index} />
-            </div>
-          );
-        })}
+        />{" "}
+        <div className="row justify-content-center wrap">
+          {filterList.map((book, index) => {
+            return (
+              <div>
+                <Book key={index} book={book} i={index} />
+              </div>
+            );
+          })}{" "}
+        </div>
       </div>
     );
   }

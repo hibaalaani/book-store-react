@@ -3,7 +3,6 @@ export default class Book extends Component {
   constructor(props) {
     super();
     this.state = {
-      book: props.book,
       readMore: false,
       bookInfo: false
     };
@@ -27,7 +26,7 @@ export default class Book extends Component {
     });
   }
   render() {
-    const book = this.state.book;
+    const book = this.props.book;
     return (
       <div>
         {" "}
@@ -72,16 +71,16 @@ export default class Book extends Component {
         {this.state.bookInfo && (
           <React.Fragment>
             <div className="myModal ">
-              <div className="modelContent opacity">
+              <div className="modalContent opacity">
                 <img
-                  className="opacity"
+                  className=""
                   alt="img"
                   src={book.detail}
                   // style={style.img}
                 />{" "}
                 <button
                   type="button"
-                  className="close btn-primary bg-white text-primary inline-block"
+                  className="back col-4 align-items-center"
                   onClick={event => {
                     this.closeBack();
                   }}
@@ -105,50 +104,4 @@ const style = {
   container: {
     backgroundColor: "white"
   }
-
-  // flipCard: {
-  //   backgroundColor: "transparent",
-  //   width: "200px",
-  //   height: "300px",
-  //   perspective: "1000px",
-  //   margin: "30px"
-  // },
-
-  // flipCardInner: {
-  //   position: "relative",
-  //   width: " 100 %",
-  //   height: " 100 %",
-  //   textAlign: "center",
-  //   transition: "transform 0.6s",
-  //   transformStyle: "preserve - 3d",
-  //   boxShadow: " 0 4px 8px 0 rgba(0, 0, 0, 0.2)"
-  // },
-
-  // .flip - card: hover.flip - card - inner {
-  //   transform: rotateY(180deg);
-  // }
-
-  // flipCardFront: {
-  //   position: "absolute",
-  //   width: " 100 %",
-  //   height: " 100 %"
-  // },
-  // flipCardBack: {
-  //   position: "absolute",
-  //   width: " 100 %",
-  //   height: " 100 %"
-  // -webkit - backface - visibility: "hidden",
-  // backface - visibility:" hidden",
-  // }
-
-  // flipCardFront: {
-  //   backgroundColor: "#bbb",
-  //   color: "black"
-  // },
-
-  // flipCardBack: {
-  //   backgroundColor: " #3d88cfa9",
-  //   color: "white",
-  //   transform: " rotateY(180deg)"
-  // }
 };

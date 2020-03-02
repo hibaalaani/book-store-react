@@ -75,8 +75,9 @@ class Bookstore extends Component {
           </div>
         </div>
         <input
-          className="App"
+          className="btn btn-light text-dark ml-4 btm-lg"
           type="search"
+          placeholder="search for your book"
           onChange={event => {
             this.setState({ search: event.target.value });
           }}
@@ -85,8 +86,8 @@ class Bookstore extends Component {
         <div className="row justify-content-center wrap">
           {filterList.map((book, index) => {
             return (
-              <div>
-                <Book key={index} book={book} i={index} />
+              <div key={index}>
+                <Book book={book} i={index} />
               </div>
             );
           })}{" "}

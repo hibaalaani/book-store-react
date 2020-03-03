@@ -49,6 +49,7 @@ export default class Book extends Component {
               </h4>
               <h6>
                 <button
+                  className="btn-md"
                   onClick={event => {
                     this.moreInfo();
                   }}
@@ -58,7 +59,7 @@ export default class Book extends Component {
                 {this.state.readMore && <p> {book.description} </p>}
               </h6>
               <button
-                className="btn-sm"
+                className="btn-md"
                 onClick={event => {
                   this.openBook();
                 }}

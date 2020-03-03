@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Book from "./Book";
-// import HeaderW from "./HeaderW";
+import HeaderW from "./HeaderW";
 
 class Bookstore extends Component {
   constructor() {
@@ -28,61 +28,25 @@ class Bookstore extends Component {
       return index < 25;
     });
   }
-
+  //////////filter the book
   filter() {
-    //const filter = event.target.value.toUpperCase();
     const filteredBooks = this.state.books.filter((book, index) => {
       return book.title.toUpperCase().includes(this.state.search.toUpperCase());
     });
     console.log(filteredBooks);
     return filteredBooks;
-    //this.setState({ books: filteredBooks });
   }
-
+  ///////take the event in search
+  handleSearch = event => {
+    console.log("event from bookstore", event.target.value);
+    this.setState({ search: event.target.value });
+  };
   render() {
     const filterList = this.filter();
     return (
       <div>
-        <div className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="/#" target="#">
-            Book Store
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarText">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="/#">
-                  contact <span className="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link" href="/#">
-                  Pricing
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <input
-          className="btn btn-light text-dark ml-4 btm-lg"
-          type="search"
-          placeholder="search for your book"
-          onChange={event => {
-            this.setState({ search: event.target.value });
-          }}
-          id=""
-        />{" "}
+        {/* sent the event to child headerw */}
+        <HeaderW callbackFromParent={this.handleSearch} />
         <div className="row justify-content-center wrap">
           {filterList.map((book, index) => {
             return (

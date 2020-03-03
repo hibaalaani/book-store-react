@@ -2,6 +2,7 @@ body {
   background-color: rgb(207, 226, 233);
   margin-top: 0;
 }
+
 .App {
   text-align: center;
 }
@@ -82,6 +83,8 @@ body {
   background-color: #3d88cfa9;
   color: white;
   transform: rotateY(180deg);
+  width: 100%;
+  height: 100%;
 }
 
 img {

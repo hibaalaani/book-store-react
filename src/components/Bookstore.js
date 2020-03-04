@@ -51,7 +51,7 @@ class Bookstore extends Component {
           {filterList.map((book, index) => {
             return (
               <div key={index}>
-                <Book book={book} i={index} />
+                <Book allBooks={filterList} book={book} i={index} />
               </div>
             );
           })}{" "}

@@ -4,10 +4,16 @@ export default class Book extends Component {
     super();
     this.state = {
       readMore: false,
-      bookInfo: false
+      bookInfo: false,
+      imageIndex: props.i,
+      disabledPrev: false,
+      disabledNext: false
     };
   }
 
+  componentDidMount() {
+    //this.setState({ index: this.props.i });
+  }
   ///////////more info button
   moreInfo() {
     //let id = event.target.id;
@@ -25,8 +31,37 @@ export default class Book extends Component {
       bookInfo: false
     });
   }
+
+  goBack() {
+    const { imageIndex } = this.state;
+    let lastIndex = this.props.allBooks.length - 1;
+    let prev = imageIndex - 1;
+    let stopcount = imageIndex === 0;
+    const index = stopcount ? lastIndex : prev;
+    this.setState({
+      imageIndex: index
+    });
+  }
+  goNext() {
+    const { imageIndex } = this.state;
+    console.log(imageIndex);
+    let lastIndex = this.props.allBooks.length - imageIndex;
+    console.log(lastIndex);
+    let next = imageIndex + 1;
+    console.log(next);
+    let stopcount = imageIndex === this.props.allBooks.length - 1;
+    console.log(stopcount);
+    const index = stopcount ? 0 : next;
+    console.log(index);
+    this.setState({
+      imageIndex: index
+    });
+  }
+
   render() {
     const book = this.props.book;
+    const allBooks = this.props.allBooks;
+
     return (
       <div>
         {" "}
@@ -76,9 +111,15 @@ export default class Book extends Component {
                 <img
                   className=""
                   alt="img"
-                  src={book.detail}
+                  src={allBooks[this.state.imageIndex].detail}
                   // style={style.img}
                 />{" "}
+                <button
+                  className="flaot-left btn-lg"
+                  onClick={() => this.goBack()}
+                >
+                  Previous
+                </button>
                 <button
                   type="button"
                   className="back col-4 align-items-center"
@@ -87,6 +128,12 @@ export default class Book extends Component {
                   }}
                 >
                   Back To Book List
+                </button>
+                <button
+                  className="flaot-right btn-lg"
+                  onClick={() => this.goNext()}
+                >
+                  next
                 </button>
               </div>
             </div>

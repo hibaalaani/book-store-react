@@ -8,16 +8,16 @@ class Bookstore extends Component {
     this.state = {
       books: [],
       search: "",
-      readMore: false
+      readMore: false,
     };
   }
 
   componentDidMount() {
-    fetch("https://api.myjson.com/bins/zyv02")
-      .then(res => {
+    fetch("https://api.jsonbin.io/b/5ea833484c87c3359a632938")
+      .then((res) => {
         return res.json();
       })
-      .then(result => {
+      .then((result) => {
         console.log("result :", result);
         this.setState({ books: result.books });
       });
@@ -37,7 +37,7 @@ class Bookstore extends Component {
     return filteredBooks;
   }
   ///////take the event in search
-  handleSearch = event => {
+  handleSearch = (event) => {
     console.log("event from bookstore", event.target.value);
     this.setState({ search: event.target.value });
   };

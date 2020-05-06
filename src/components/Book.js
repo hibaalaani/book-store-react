@@ -5,9 +5,7 @@ export default class Book extends Component {
     this.state = {
       readMore: false,
       bookInfo: false,
-      imageIndex: props.i,
-      disabledPrev: false,
-      disabledNext: false
+      imageIndex: props.i
     };
   }
 
